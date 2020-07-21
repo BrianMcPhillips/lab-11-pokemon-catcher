@@ -17,15 +17,15 @@ let pokemonCaught = [];
 
 const displayedPokemon = getUniqueArray(pokemon);
 
-let pokemonThrow1 = displayedPokemon[0];
-let pokemonThrow2 = displayedPokemon[1];
-let pokemonThrow3 = displayedPokemon[2];
+const list = document.getElementById('pokemon-display');
+for (let i = 0; i < displayedPokemon.length; i++) {
+    const pokemonList = displayedPokemon[i];
+    const domUpdate = renderPokemon(pokemonList);
+    list.appendChild(domUpdate);
+}
 
-console.log(pokemonThrow1);
 
-renderPokemon(pokemonThrow1, pokemonThrow2, pokemonThrow3);
 
-console.log(renderPokemon(pokemonThrow1));
 
 
 
