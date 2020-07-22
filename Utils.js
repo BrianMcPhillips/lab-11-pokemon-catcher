@@ -1,6 +1,6 @@
 /* eslint-disable */
 //import { rawPokemon } from './data/pokemon-list.js';
-import { renderPokemon } from './renderPokemon.js';
+//import { renderPokemon } from './renderPokemon.js';
 export function getRandomPokemon(pokemonArray) {
     const randomIndex = Math.floor(Math.random() * pokemonArray.length);
 
@@ -55,10 +55,3 @@ export function pushToEncounteredArray(displayedPokemon, pokemonEncountered) {
     }
 }
 
-export function renderDisplayedPokemon(displayedPokemon) {
-    for (let i = 0; i < displayedPokemon.length; i++) {
-        const pokemonList = displayedPokemon[i];
-        const domUpdate = renderPokemon(pokemonList);
-        list.appendChild(domUpdate);
-    }
-}
