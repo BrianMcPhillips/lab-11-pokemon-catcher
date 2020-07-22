@@ -11,6 +11,7 @@ export function renderPokemon(pokemon) {
     const img = document.createElement('img');
     img.src = pokemon.url_image;
     img.alt = pokemon.pokemon + ' image';
+    img.id = 'pokemon-image';
     label.appendChild(img);
 
     const h3 = document.createElement('h3');

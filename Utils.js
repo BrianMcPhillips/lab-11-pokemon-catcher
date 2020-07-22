@@ -55,3 +55,9 @@ export function pushToEncounteredArray(displayedPokemon, pokemonEncountered) {
     }
 }
 
+export function clearOldPokemon() {
+    const labels = document.querySelectorAll('label');
+    labels[0].remove();
+    labels[1].remove();
+    labels[2].remove();
+}
