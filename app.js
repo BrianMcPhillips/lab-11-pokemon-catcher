@@ -1,7 +1,7 @@
 
 // import functions and grab DOM elements
 import { rawPokemon } from './data/pokemon-list.js';
-import { getUniqueArray, pushToEncounteredArray, clearOldPokemon } from './Utils.js';
+import { getUniqueArray, pushToEncounteredArray, clearOldPokemon, findById } from './Utils.js';
 import { renderPokemon } from './renderPokemon.js';
 // initialize state
 const nextButton = document.getElementById('next-button');
@@ -13,7 +13,8 @@ const list = document.getElementById('pokemon-display');
 //let rounds = 0;
 const pokemon = rawPokemon.slice();
 let pokemonEncountered = [];
-let pokemonCaught = [];
+//let pokemonCaught = [];
+let rounds = 0;
 
 
 let displayedPokemon = getUniqueArray(pokemon);
@@ -32,21 +33,26 @@ renderDisplayedPokemon(displayedPokemon);
 
 nextButton.addEventListener('click', () => {
     pushToEncounteredArray(displayedPokemon, pokemonEncountered);
-
+    rounds++;
     const userInput = document.querySelector('input:checked');
-    const captPokemon = userInput.value;
-    pokemonCaught.push(captPokemon);
+    const captPokemon = Number(userInput.value);
+
+    const capturedPokemon = findById(pokemonEncountered, captPokemon);
+    
+    capturedPokemon.captured++;
+    
+    
     clearOldPokemon();
     displayedPokemon = getUniqueArray(pokemon);
     
     renderDisplayedPokemon(displayedPokemon);
-    caughtSpan.textContent = `Pokemon Captured = ${pokemonCaught.length}`;
-    pokemonSeen.textContent = `Pokemon Encountered = ${pokemonEncountered.length}`;
+    caughtSpan.textContent = `Pokemon Captured = ${rounds}`;
     
     
-    console.log(pokemonCaught);
+    
+  
     console.log(pokemonEncountered);
-    console.log(rounds);
+    
 });
 
 

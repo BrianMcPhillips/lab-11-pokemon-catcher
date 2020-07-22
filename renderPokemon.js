@@ -5,7 +5,7 @@ export function renderPokemon(pokemon) {
     const inputButton = document.createElement('input');
     inputButton.type = 'radio';
     inputButton.name = 'pokemon-select';
-    inputButton.value = pokemon.pokemon;
+    inputButton.value = pokemon.id;
     label.appendChild(inputButton);
 
     const img = document.createElement('img');
