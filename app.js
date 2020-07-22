@@ -14,7 +14,7 @@ const list = document.getElementById('pokemon-display');
 const pokemon = rawPokemon.slice();
 let pokemonEncountered = [];
 let pokemonCaught = [];
-let rounds = 0;
+
 
 let displayedPokemon = getUniqueArray(pokemon);
 
@@ -25,22 +25,23 @@ function renderDisplayedPokemon(displayedPokemon) {
         list.appendChild(domUpdate);
     }
 }
-pushToEncounteredArray(displayedPokemon, pokemonEncountered);
+//pushToEncounteredArray(displayedPokemon, pokemonEncountered);
 
 renderDisplayedPokemon(displayedPokemon);
 
 
 nextButton.addEventListener('click', () => {
-    rounds++;
+    pushToEncounteredArray(displayedPokemon, pokemonEncountered);
+
     const userInput = document.querySelector('input:checked');
     const captPokemon = userInput.value;
     pokemonCaught.push(captPokemon);
     clearOldPokemon();
     displayedPokemon = getUniqueArray(pokemon);
-    pushToEncounteredArray(displayedPokemon, pokemonEncountered);
+    
     renderDisplayedPokemon(displayedPokemon);
-    caughtSpan.textContent = pokemonCaught.pokemon;
-    pokemonSeen.textContent = `Pokemon Encountered ${pokemonEncountered.length}`;
+    caughtSpan.textContent = `Pokemon Captured = ${pokemonCaught.length}`;
+    pokemonSeen.textContent = `Pokemon Encountered = ${pokemonEncountered.length}`;
     
     
     console.log(pokemonCaught);
