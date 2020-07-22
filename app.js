@@ -52,6 +52,7 @@ nextButton.addEventListener('click', () => {
 
 console.log(pokemonEncountered);
 
+//not working
 
 
 /* for (let i = 0; i < displayedPokemon.length; i++) {
