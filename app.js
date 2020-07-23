@@ -1,12 +1,12 @@
 
 // import functions and grab DOM elements
 import { rawPokemon } from './data/pokemon-list.js';
-import { getUniqueArray, pushToEncounteredArray, clearOldPokemon, findById } from './Utils.js';
+import { getUniqueArray, pushToEncounteredArray, clearOldPokemon, findById, saveToLocalStorage } from './Utils.js';
 import { renderPokemon } from './renderPokemon.js';
 // initialize state
 const nextButton = document.getElementById('next-button');
 const caughtSpan = document.querySelector('#pokemon-caught');
-const pokemonSeen = document.querySelector('#pokemon-seen');
+//const pokemonSeen = document.querySelector('#pokemon-seen');
 const list = document.getElementById('pokemon-display');
 
 
@@ -32,14 +32,34 @@ renderDisplayedPokemon(displayedPokemon);
 
 
 nextButton.addEventListener('click', () => {
+    const userInput = document.querySelector('input:checked');
+    const captPokemon = userInput.value; 
+    
+    
+    
+    
     pushToEncounteredArray(displayedPokemon, pokemonEncountered);
     rounds++;
-    const userInput = document.querySelector('input:checked');
-    const captPokemon = Number(userInput.value);
-
+    
     const capturedPokemon = findById(pokemonEncountered, captPokemon);
     
+    if (userInput === null) {
+        alert('Please Select A Pokemon');
+    } 
+    if (userInput === null) {
+        rounds--;
+    }
+    if (rounds === 9) {
+        nextButton.textContent = 'Go to results page';
+    }
+    
     capturedPokemon.captured++;
+    
+    if (rounds === 10) {
+    
+        saveToLocalStorage(pokemonEncountered);
+        window.location.pathname = './results-page/index.html';
+    }
     
     
     clearOldPokemon();

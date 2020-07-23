@@ -28,10 +28,10 @@ export function removeItemFromArray(array, removeItem) {
     return newArray;
 }
 
-export function findById(pokemons, id) {
+export function findById(pokemons, name) {
     for (let i = 0; i < pokemons.length; i++) { 
         const pokemon = pokemons[i];
-        if (pokemon.id === id) {
+        if (pokemon.name === name) {
             return pokemon;
         
         }
@@ -46,14 +46,14 @@ export function pushToEncounteredArray(displayedPokemon, pokemonEncountered) {
     for (let i = 0; i < displayedPokemon.length; i++) {
 
         const currentDisplayedPokemon = displayedPokemon[i];
-        const find = findById(pokemonEncountered, currentDisplayedPokemon.id);
+        const find = findById(pokemonEncountered, currentDisplayedPokemon.name);
         if (find) {
             find.quantity++;
             
             
             
         } else { 
-            pokemonEncountered.push({id: currentDisplayedPokemon.id, quantity: 1, captured: 0})}
+            pokemonEncountered.push({name: currentDisplayedPokemon.name, quantity: 1, captured: 0})}
         
     }
 }
@@ -63,4 +63,18 @@ export function clearOldPokemon() {
     labels[0].remove();
     labels[1].remove();
     labels[2].remove();
+}
+
+const dataKey = 'POKEMONDATA';
+export function saveToLocalStorage(data) {
+    const stringyData = JSON.stringify(data);
+    localStorage.setItem(dataKey, stringyData);
+    
+    
+}
+
+export function loadFromLocalStorage() {
+    const stringyData = localStorage.getItem(dataKey);
+    const data = JSON.parse(stringyData);
+    return data;
 }
