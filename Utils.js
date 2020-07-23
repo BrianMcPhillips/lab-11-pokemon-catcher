@@ -78,3 +78,4 @@ export function loadFromLocalStorage() {
     const data = JSON.parse(stringyData);
     return data;
 }
+
