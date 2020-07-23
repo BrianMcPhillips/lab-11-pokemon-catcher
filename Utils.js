@@ -1,6 +1,6 @@
 /* eslint-disable */
 //import { rawPokemon } from './data/pokemon-list.js';
-import { renderPokemon } from './renderPokemon.js';
+//import { renderPokemon } from './renderPokemon.js';
 export function getRandomPokemon(pokemonArray) {
     const randomIndex = Math.floor(Math.random() * pokemonArray.length);
 
@@ -28,10 +28,10 @@ export function removeItemFromArray(array, removeItem) {
     return newArray;
 }
 
-export function findById(pokemons, id) {
-    for (let i = 0; i < pokemons.length; i++) 
-    { const pokemon = pokemons[i];
-        if (pokemon.id === id) {
+export function findById(pokemons, name) {
+    for (let i = 0; i < pokemons.length; i++) { 
+        const pokemon = pokemons[i];
+        if (pokemon.name === name) {
             return pokemon;
         
         }
@@ -44,21 +44,37 @@ export function findById(pokemons, id) {
 
 export function pushToEncounteredArray(displayedPokemon, pokemonEncountered) {
     for (let i = 0; i < displayedPokemon.length; i++) {
+
         const currentDisplayedPokemon = displayedPokemon[i];
-        if (findById(pokemonEncountered, displayedPokemon.pokemon)) {
-            pokemonEncountered.quantity++;
+        const find = findById(pokemonEncountered, currentDisplayedPokemon.name);
+        if (find) {
+            find.quantity++;
             
             
             
-        } else { pokemonEncountered.push({id: currentDisplayedPokemon.pokemon, quantity: 1})}
+        } else { 
+            pokemonEncountered.push({name: currentDisplayedPokemon.name, quantity: 1, captured: 0})}
         
     }
 }
 
-export function renderDisplayedPokemon(displayedPokemon) {
-    for (let i = 0; i < displayedPokemon.length; i++) {
-        const pokemonList = displayedPokemon[i];
-        const domUpdate = renderPokemon(pokemonList);
-        list.appendChild(domUpdate);
-    }
+export function clearOldPokemon() {
+    const labels = document.querySelectorAll('label');
+    labels[0].remove();
+    labels[1].remove();
+    labels[2].remove();
+}
+
+const dataKey = 'POKEMONDATA';
+export function saveToLocalStorage(data) {
+    const stringyData = JSON.stringify(data);
+    localStorage.setItem(dataKey, stringyData);
+    
+    
+}
+
+export function loadFromLocalStorage() {
+    const stringyData = localStorage.getItem(dataKey);
+    const data = JSON.parse(stringyData);
+    return data;
 }
