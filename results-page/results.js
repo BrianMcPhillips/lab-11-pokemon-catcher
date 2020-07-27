@@ -23,7 +23,7 @@ function mungeData(array) {
 }
 const finishedData = mungeData(data);
 
-console.log(finishedData);
+
 
 let ctx = document.getElementById('myChart').getContext('2d');
 let myChart = new Chart(ctx, { //eslint-diable-line

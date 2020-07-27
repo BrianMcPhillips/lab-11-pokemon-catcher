@@ -71,7 +71,7 @@ nextButton.addEventListener('click', () => {
     
     
   
-    console.log(pokemonEncountered);
+    
     
 });
 
