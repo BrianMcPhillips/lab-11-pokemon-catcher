@@ -58,7 +58,7 @@ nextButton.addEventListener('click', () => {
     if (rounds === 10) {
     
         saveToLocalStorage(pokemonEncountered);
-        window.location.pathname = './results-page/index.html';
+        window.location.pathname = '../results-page/index.html';
     }
     
     
