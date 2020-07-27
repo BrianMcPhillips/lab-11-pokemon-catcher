@@ -26,7 +26,7 @@ const finishedData = mungeData(data);
 
 
 let ctx = document.getElementById('myChart').getContext('2d');
-let myChart = new Chart(ctx, { //eslint-diable-line
+let myChart = new Chart(ctx, { //eslint-disable-line
     type: 'bar',
     data: {
         labels: finishedData[0],
