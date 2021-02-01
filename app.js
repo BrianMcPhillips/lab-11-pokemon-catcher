@@ -79,6 +79,7 @@ nextButton.addEventListener('click', () => {
 
 
 
+//not working
 
 
 /* for (let i = 0; i < displayedPokemon.length; i++) {
